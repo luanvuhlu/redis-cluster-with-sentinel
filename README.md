@@ -45,17 +45,10 @@ redisclusterwithsentinel_master_1     docker-entrypoint.sh redis ...   Up      6
 redisclusterwithsentinel_sentinel_1   entrypoint.sh                    Up      6379/tcp 
 redisclusterwithsentinel_slave_1      docker-entrypoint.sh redis ...   Up      6379/tcp 
 ```
-
-Scale out the instance number of sentinel
-
-```
-docker-compose scale sentinel=3
-```
-
-Scale out the instance number of slaves
+Allow one one sentinel
 
 ```
-docker-compose scale slave=4
+docker-compose up --scale sentinel=1
 ```
 
 Check the status of redis cluster
@@ -71,12 +64,7 @@ The result is
 ---------------------------------------------------------------------------------------
 redisclusterwithsentinel_master_1     docker-entrypoint.sh redis ...   Up      6379/tcp 
 redisclusterwithsentinel_sentinel_1   entrypoint.sh                    Up      6379/tcp 
-redisclusterwithsentinel_sentinel_2   entrypoint.sh                    Up      6379/tcp 
-redisclusterwithsentinel_sentinel_3   entrypoint.sh                    Up      6379/tcp 
 redisclusterwithsentinel_slave_1      docker-entrypoint.sh redis ...   Up      6379/tcp 
-redisclusterwithsentinel_slave_2      docker-entrypoint.sh redis ...   Up      6379/tcp 
-redisclusterwithsentinel_slave_3      docker-entrypoint.sh redis ...   Up      6379/tcp 
-redisclusterwithsentinel_slave_4      docker-entrypoint.sh redis ...   Up      6379/tcp 
 ```
 
 For stop master redis server.
